@@ -2,6 +2,11 @@ pipeline {
     agent {
         docker { image 'node:16-alpine' }
     }
+    options {
+        timestamps()
+        ansiColor('xterm')
+        timeout(time: 2, unit: 'MINUTES')
+    }
     stages {
         stage("build") {
             steps {
