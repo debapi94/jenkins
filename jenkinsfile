@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'node:16-alpine' }
-    }
+    agent any
     options {
         timestamps()
         ansiColor('xterm')
@@ -10,12 +8,12 @@ pipeline {
     stages {
         stage("build") {
             steps {
-                sh 'docker build -t hello_there .'
+                echo 'build'
             }
         }
         stage("run") {
             steps {
-                sh 'docker run --rm hello_there'
+                echo 'run'
             }
         }
     }
