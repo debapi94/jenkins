@@ -5,15 +5,33 @@ pipeline {
         ansiColor('xterm')
         timeout(time: 2, unit: 'MINUTES')
     }
+    environment{
+        RAJ_USER = 22
+    }
     stages {
         stage("build") {
             steps {
                 echo 'build'
+                echo "${env.BUILD_NUMBER}"
+                echo '${BUILD_NUMBER}'
+                sh 'echo BUILD_NUMBER = ${BUILD_NUMBER}'
+                echo "${RAJ_USER.padRight(5) + 'abcd'}"
+                
+                script {
+                    switch(env.RAJ_USER){
+                        case "22": env.RAJ_ID = 1; break
+                        case "23": env.RAJ_ID = 2; break
+                    }
+                }
+                
+                echo "${RAJ_ID}"
             }
         }
         stage("run") {
             steps {
                 echo 'run'
+                
+                echo "${RAJ_ID}"
             }
         }
     }
