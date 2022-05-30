@@ -8,7 +8,7 @@ pipeline {
         timeout(time: 2, unit: 'MINUTES')
     }
     parameters {
-        string (name:"BUILD_PARAM", default: "", description:"provide a build param")
+        string (name:"BUILD_PARAM", defaultValue: "", description:"provide a build param")
     }
     environment{
         RAJ_USER = 22
