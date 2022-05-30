@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
     agent any
     options {
@@ -26,6 +28,12 @@ pipeline {
                 //     }
                 // }
                 
+                echo "${RAJ_ID}"
+
+                script{
+                    gv = load "script1.groovy"
+                    gv.getVal()
+                }
                 echo "${RAJ_ID}"
             }
         }
