@@ -32,9 +32,9 @@ pipeline {
 
                 script{
                     gv = load "script1.groovy"
-                    gv.getVal()
+                    a = gv.getVal()
+                    echo "${a}"
                 }
-                echo "${RAJ_ID}"
             }
         }
         stage("run") {
