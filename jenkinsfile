@@ -38,6 +38,8 @@ pipeline {
                     a = gv.getVal()
                     echo "${a}"
                 }
+
+                echo "BUILD_PARAM: ${BUILD_PARAM}"
             }
         }
         stage("run") {
