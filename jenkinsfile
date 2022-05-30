@@ -7,6 +7,8 @@ pipeline {
     }
     environment{
         RAJ_USER = 22
+        RAJ_INPUT = 1
+        RAJ_ID = getEnvVar(env.RAJ_INPUT)
     }
     stages {
         stage("build") {
@@ -17,12 +19,12 @@ pipeline {
                 sh 'echo BUILD_NUMBER = ${BUILD_NUMBER}'
                 echo "${RAJ_USER.padRight(5) + 'abcd'}"
                 
-                script {
-                    switch(env.RAJ_USER){
-                        case "22": env.RAJ_ID = 1; break
-                        case "23": env.RAJ_ID = 2; break
-                    }
-                }
+                // script {
+                //     switch(env.RAJ_USER){
+                //         case "22": env.RAJ_ID = 1; break
+                //         case "23": env.RAJ_ID = 2; break
+                //     }
+                // }
                 
                 echo "${RAJ_ID}"
             }
@@ -35,4 +37,11 @@ pipeline {
             }
         }
     }
+}
+
+def getEnvVar(inp){
+    switch(inp){
+                case '1': return 11
+                case '2': return 22
+            }
 }
